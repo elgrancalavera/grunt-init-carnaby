@@ -1,0 +1,38 @@
+{
+  "name": "grunt-init-carnaby",
+  "description": "The Carnaby workflow scaffolding template.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/elgrancalavera/grunt-init-carnaby",
+  "author": {
+    "name": "M&C Saatchi",
+    "email": "digitaltech@mcsaatchi.com",
+    "url": "mcsaatchi.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/elgrancalavera/grunt-init-carnaby.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elgrancalavera/grunt-init-carnaby/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/elgrancalavera/grunt-init-carnaby/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/carnaby",
+  "engines": {
+    "node": ">=0.10.15"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.4.0",
+    "grunt": "~0.4.1"
+  },
+  "keywords": []
+}
