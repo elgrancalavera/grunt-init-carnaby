@@ -1,8 +1,7 @@
 'use strict';
 
 module.exports = function(grunt) {
-
-  // Project configuration.
+  grunt.option('appDir', 'root');
   grunt.initConfig({
     nodeunit: {
       files: ['test/**/*_test.js'],
@@ -34,13 +33,15 @@ module.exports = function(grunt) {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
       },
-    }
+    },
+    carnaby: {}
   });
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-carnaby');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit']);
