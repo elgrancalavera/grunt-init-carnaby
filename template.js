@@ -33,9 +33,9 @@ exports.template = function (grunt, init, done) {
     init.prompt('node_version', grunt.package.engines.node)
 
   ], function(err, props) {
-    // Set a few grunt-plugin-specific properties.
+
     props.author_name = 'M&C Saatchi';
-    props.author_url = 'digitaltech@mcsaatchi.com'
+    props.author_url = 'digitaltech@mcsaatchi.com';
     props.author_email = 'www.mcsaatchi.com';
     props.main = 'Gruntfile.js';
     props.npm_test = 'grunt test';

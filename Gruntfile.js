@@ -13,6 +13,9 @@ module.exports = function(grunt) {
       gruntfile: {
         src: 'Gruntfile.js'
       },
+      template: {
+        src: 'template.js'
+      },
       lib: {
         src: ['lib/**/*.js']
       },
@@ -26,7 +29,7 @@ module.exports = function(grunt) {
         tasks: ['jshint:gruntfile']
       },
       lib: {
-        files: '<%= jshint.lib.src %>',
+        files: ['<%= jshint.lib.src %>', '<%= jshint.template.src %>'],
         tasks: ['jshint:lib', 'nodeunit']
       },
       test: {
@@ -37,13 +40,12 @@ module.exports = function(grunt) {
     carnaby: {}
   });
 
-  // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-carnaby');
 
-  // Default task.
   grunt.registerTask('default', ['jshint', 'nodeunit']);
+  grunt.registerTask('code', ['default', 'watch']);
 
 };

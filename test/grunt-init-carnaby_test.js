@@ -1,7 +1,5 @@
 'use strict';
 
-var carnaby = require('../lib/carnaby.js');
-
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
@@ -22,15 +20,10 @@ var carnaby = require('../lib/carnaby.js');
     test.ifError(value)
 */
 
-exports['awesome'] = {
-  setUp: function(done) {
-    // setup here
-    done();
-  },
-  'no args': function(test) {
+exports['carnaby-init'] = {
+  placeholder: function(test) {
     test.expect(1);
-    // tests here
-    test.equal(carnaby.awesome(), 'awesome', 'should be awesome.');
+    test.ok(true);
     test.done();
   },
 };
