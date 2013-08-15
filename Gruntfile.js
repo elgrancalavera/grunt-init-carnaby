@@ -104,11 +104,9 @@ module.exports = function(grunt) {
     carnaby: {}
   });
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  // load all grunt tasks
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  // carnaby is still not one of the dependencies
   grunt.loadNpmTasks('grunt-carnaby');
 
   grunt.registerTask('default', ['jshint', 'nodeunit', 'clean', 'copy']);
