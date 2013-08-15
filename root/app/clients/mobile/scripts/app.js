@@ -17,15 +17,15 @@ define(function (require, exports, module) {
     var templates = require('templates');
 
     /*
-     * `core/controllers/app-controller` must be required before we actually do
+     * `common/controllers/app-controller` must be required before we actually do
      * anything else, to give it a chance to require and add initialisers to
-     * `core/app` before any other part of our code.
+     * `common/app` before any other part of our code.
      */
-    var appController = require('core/controllers/app-controller');
+    var appController = require('common/controllers/app-controller');
 
     /*
      * Now we get a chance to add our own initializers and event handlers to
-     * `core/app`, via `core/controllers/app-controller`.
+     * `common/app`, via `common/controllers/app-controller`.
      */
     appController.app.addInitializer(function, (options) {
 

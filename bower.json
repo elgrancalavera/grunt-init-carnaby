@@ -1,0 +1,15 @@
+{
+  "name": "grunt-init-carnaby",
+  "version": "0.1.0",
+  "main": "Gruntfile.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "html5-boilerplate": "~4.2.0"
+  }
+}

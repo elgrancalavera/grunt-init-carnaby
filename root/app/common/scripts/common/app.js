@@ -10,5 +10,5 @@ define(function (require, exports, module) {
     'use strict';
     var Backbone = require('backbone');
     require('backbone.marionette');
-    return new Backbone.Marionette.Application();
+    exports = new Backbone.Marionette.Application();
 });

@@ -1,6 +1,6 @@
 /*
  * app-controller: the main entry point for the applcation, all configuration
- *  should be set against the `core/app-controller` object in the main.js
+ *  should be set against the `common/app-controller` object in the main.js
  *  configuration file.
  *
  * {%= name %}
@@ -12,10 +12,10 @@ define(function (require, exports, module) {
     'use strict';
 
     /*
-     * `core/controllers/app-controller` must be the first one requiring
-     * `core/app`.
+     * `common/controllers/app-controller` must be the first one requiring
+     * `common/app`.
      */
-    var app = require('core/app');
+    var app = require('common/app');
 
     /*
      * Initialisation than can be safely shared across different and possible
