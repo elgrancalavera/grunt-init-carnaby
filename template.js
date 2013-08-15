@@ -6,6 +6,8 @@
  * Licensed under the MIT license.
  */
 'use-strict';
+var path = require('path');
+
 exports.description = 'The Carnaby workflow scaffolding template.';
 
 // Template-specific notes to be displayed before question prompts.
@@ -19,6 +21,17 @@ exports.after = 'You should now install project dependencies with _npm ' +
 exports.warnOn = '*';
 
 exports.template = function (grunt, init, done) {
+  // The package.json file for this grunt project
+  var pkg = grunt.file.readJSON(path.join(__dirname, 'package.json'));
+
+  // generate dependencies
+  var ignoredDeps = [
+    'grunt-contrib-nodeunit'
+  ];
+
+  grunt.util._.each(ignoredDeps, function (key) {
+    delete pkg.devDependencies[key];
+  });
 
   init.process({type: 'carnaby'}, [
     init.prompt('name'),
@@ -40,13 +53,7 @@ exports.template = function (grunt, init, done) {
     props.main = 'Gruntfile.js';
     props.npm_test = 'grunt test';
 
-    props.devDependencies = {
-      'grunt': '~0.4.1',
-      'grunt-contrib-clean': '~0.4.0',
-      'grunt-contrib-jshint': '~0.6.0',
-      'grunt-contrib-watch': '~0.4.0',
-      'matchdep': '~0.1.2'
-    };
+    props.devDependencies = pkg.devDependencies;
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);

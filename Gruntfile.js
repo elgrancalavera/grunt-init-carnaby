@@ -33,9 +33,9 @@ module.exports = function(grunt) {
   };
 
   var coreHTML5bp = [].concat(
-    addPrefix(html5bp.root, 'root/app/core/'),
-    addPrefix(html5bp.js, 'root/app/core/scripts/'),
-    addPrefix(html5bp.css, 'root/app/core/styles/')
+    addPrefix(html5bp.root, 'root/app/common/'),
+    addPrefix(html5bp.js, 'root/app/common/scripts/'),
+    addPrefix(html5bp.css, 'root/app/common/styles/')
   );
 
   //----------------------------------
@@ -69,6 +69,10 @@ module.exports = function(grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
+      template: {
+        files: '<%= jshint.template.src %>',
+        tasks: ['jshint:template']
+      },
       test: {
         files: '<%= jshint.test.src %>',
         tasks: ['jshint:test', 'nodeunit']
@@ -81,19 +85,19 @@ module.exports = function(grunt) {
             cwd: 'bower_components/html5-boilerplate',
             expand: true,
             src: html5bp.root,
-            dest: 'root/app/core'
+            dest: 'root/app/common'
           },
           {
             cwd: 'bower_components/html5-boilerplate/js',
             expand: true,
             src: html5bp.js,
-            dest: 'root/app/core/scripts'
+            dest: 'root/app/common/scripts'
           },
           {
             cwd: 'bower_components/html5-boilerplate/css',
             expand: true,
             src: html5bp.css,
-            dest: 'root/app/core/styles'
+            dest: 'root/app/common/styles'
           }
         ]
       }
@@ -110,6 +114,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-carnaby');
 
   grunt.registerTask('default', ['jshint', 'nodeunit', 'clean', 'copy']);
-  grunt.registerTask('code', ['default', 'watch']);
+  grunt.registerTask('code', ['jshint', 'nodeunit', 'watch']);
 
 };
