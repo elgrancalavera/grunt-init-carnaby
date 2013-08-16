@@ -172,11 +172,21 @@ module.exports = function (grunt) {
 
     clean: {
       install: [].concat(commonHTML5bp)
-    }
+    },
+
+    //--------------------------------------------------------------------------
+    //
+    // carnaby
+    //
+    //--------------------------------------------------------------------------
+
+    carnaby: {}
 
   });
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  // manually load grunt-carnaby
+  grunt.loadNpmTasks('grunt-carnaby');
 
   grunt.registerTask('install', 'clean:install', 'copy:install');
   grunt.registerTask('server', ['default', 'connect', 'watch']);

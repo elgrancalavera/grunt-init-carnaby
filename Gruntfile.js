@@ -60,9 +60,8 @@ module.exports = function(grunt) {
     carnaby: {}
   });
 
-  // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-  // carnaby is still not one of the dependencies
+  // manually load grunt-carnaby
   grunt.loadNpmTasks('grunt-carnaby');
 
   grunt.registerTask('default', ['jshint', 'nodeunit', 'clean']);
