@@ -2,41 +2,7 @@
 
 module.exports = function(grunt) {
 
-  var addPrefix = function (list, prefix) {
-    return grunt.util._.map(list, function (item) {
-      return prefix + item;
-    });
-  };
 
-  // saving these two for later, so jshint stops whining
-
-  // var addSuffix = function (list, suffix) {
-  //   return grunt.util._.map(list, function (item) {
-  //     return item + suffix;
-  //   });
-  // };
-
-  // var wrap = function (list, prefix, suffix) {
-  //   return addSuffix(addPrefix(list, prefix), suffix);
-  // }
-
-  //----------------------------------
-  //
-  // Cherry pick html5bp
-  //
-  //----------------------------------
-
-  var html5bp = {
-    root: ['404.html', 'apple*', 'favicon.ico', 'humans.txt', 'robots.txt'],
-    js: ['plugins.js'],
-    css: ['normalize.css']
-  };
-
-  var coreHTML5bp = [].concat(
-    addPrefix(html5bp.root, 'root/app/common/'),
-    addPrefix(html5bp.js, 'root/app/common/scripts/'),
-    addPrefix(html5bp.css, 'root/app/common/styles/')
-  );
 
   //----------------------------------
   //
@@ -78,30 +44,6 @@ module.exports = function(grunt) {
         tasks: ['jshint:test', 'nodeunit']
       },
     },
-    copy: {
-      html5bp: {
-        files: [
-          {
-            cwd: 'bower_components/html5-boilerplate',
-            expand: true,
-            src: html5bp.root,
-            dest: 'root/app/common'
-          },
-          {
-            cwd: 'bower_components/html5-boilerplate/js',
-            expand: true,
-            src: html5bp.js,
-            dest: 'root/app/common/scripts'
-          },
-          {
-            cwd: 'bower_components/html5-boilerplate/css',
-            expand: true,
-            src: html5bp.css,
-            dest: 'root/app/common/styles'
-          }
-        ]
-      }
-    },
     extend: {
       bower: {
         options: {
@@ -113,7 +55,7 @@ module.exports = function(grunt) {
       }
     },
     clean: {
-      html5bp: coreHTML5bp
+      'bower': 'root.bower.json'
     },
     carnaby: {}
   });
@@ -123,7 +65,7 @@ module.exports = function(grunt) {
   // carnaby is still not one of the dependencies
   grunt.loadNpmTasks('grunt-carnaby');
 
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'clean', 'copy']);
+  grunt.registerTask('default', ['jshint', 'nodeunit', 'clean']);
   grunt.registerTask('code', ['jshint', 'nodeunit', 'watch']);
 
 };
