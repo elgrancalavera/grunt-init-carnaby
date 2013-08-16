@@ -47,9 +47,9 @@ exports.template = function (grunt, init, done) {
 
   ], function(err, props) {
 
-    props.author_name = 'M&C Saatchi';
-    props.author_url = 'digitaltech@mcsaatchi.com';
-    props.author_email = 'www.mcsaatchi.com';
+    props.author_name = pkg.name;
+    props.author_url = pkg.author.url;
+    props.author_email = pkg.author.email;
     props.main = 'Gruntfile.js';
     props.npm_test = 'grunt test';
 

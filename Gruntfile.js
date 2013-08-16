@@ -102,6 +102,16 @@ module.exports = function(grunt) {
         ]
       }
     },
+    extend: {
+      bower: {
+        options: {
+          deep: true
+        },
+        files:[{
+          'root/bower.json': ['bower.json', '.bower.json']
+        }]
+      }
+    },
     clean: {
       html5bp: coreHTML5bp
     },

@@ -9,6 +9,7 @@
     <title>{%= name %}</title>
     <meta name="description" content="{%= description %}">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
   </head>
   <body>
@@ -18,6 +19,7 @@
     <section id="main"></section>
     <!-- For the sake of clarity, we are only using the HTML5BP plugins because
     of the console shim -->
-    <script src="scripts/common/plugins.js"></script>
+    <script src="scripts/plugins.js"></script>
+    <script data-main="scripts/main" src="vendor/bower_components/requirejs/require.js"></script>
   </body>
 </html>

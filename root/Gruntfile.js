@@ -18,11 +18,17 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     jshint: {
-      all: [
-        'Gruntfile.js'
-      ],
       options: {
         jshintrc: '.jshintrc'
+      },
+      gruntfile: {
+        src: 'Gruntfile.js'
+      },
+      app: {
+        src: [
+          grunt.option('appDir') + '/common/scripts/common/**/*',
+          grunt.option('appDir') + '/clients/*/scripts/**/*'
+        ]
       }
     },
     watch: {
@@ -39,7 +45,6 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               lrSnippet,
-              mountFolder(connect, grunt.option('appDir') + '/common'),
               mountFolder(connect, grunt.option('appDir') + '/clients')
             ];
           }
@@ -49,6 +54,8 @@ module.exports = function (grunt) {
   });
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+  grunt.registerTask('server', ['default', 'connect', 'watch']);
   grunt.registerTask('default', ['jshint']);
 
 };

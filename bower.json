@@ -10,6 +10,8 @@
     "tests"
   ],
   "devDependencies": {
-    "html5-boilerplate": "~4.2.0"
+    "html5-boilerplate": "~4.2.0",
+    "requirejs": "~2.1.8",
+    "marionette": "~1.1.0"
   }
 }
