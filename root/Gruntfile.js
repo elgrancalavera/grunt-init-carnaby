@@ -188,8 +188,8 @@ module.exports = function (grunt) {
   // manually load grunt-carnaby
   grunt.loadNpmTasks('grunt-carnaby');
 
-  grunt.registerTask('install', 'clean:install', 'copy:install', 'c:install');
+  grunt.registerTask('install', ['clean:install', 'copy:install', 'carnaby']);
   grunt.registerTask('server', ['default', 'connect', 'watch']);
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['install', 'jshint']);
 
 };

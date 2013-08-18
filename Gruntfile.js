@@ -64,7 +64,7 @@ module.exports = function(grunt) {
   // manually load grunt-carnaby
   grunt.loadNpmTasks('grunt-carnaby');
 
-  grunt.registerTask('default', ['jshint', 'nodeunit', 'clean']);
+  grunt.registerTask('default', ['clean', 'extend', 'jshint', 'nodeunit']);
   grunt.registerTask('code', ['jshint', 'nodeunit', 'watch']);
 
 };
