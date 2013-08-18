@@ -1,7 +1,8 @@
 /*
- * handlebars-loader.js
- * Copyright (c) 2013 M&C Saatchi
- * mcsaatchi.com
+ * common/scripts/common/helpers/handlebars-loader.js
+ * {%= repository %}
+ * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
+ * {%= author_url %}
  */
 define(function (require, exports, module) {
   'use strict';
