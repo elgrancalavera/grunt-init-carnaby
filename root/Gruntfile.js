@@ -78,6 +78,11 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
 
+    copy: {},
+    handlebars: {},
+    extend: {},
+
+
     //--------------------------------------------------------------------------
     //
     // js hint
