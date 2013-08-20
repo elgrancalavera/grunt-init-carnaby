@@ -78,10 +78,8 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
 
-    copy: {},
     handlebars: {},
     extend: {},
-
 
     //--------------------------------------------------------------------------
     //
@@ -162,7 +160,8 @@ module.exports = function (grunt) {
           middleware: function (connect) {
             return [
               lrSnippet,
-              mountFolder(connect, grunt.option('appDir') + '/clients')
+              mountFolder(connect, '.carnaby/tmp'),
+              mountFolder(connect, grunt.config('carnaby.appDir'))
             ];
           }
         }
