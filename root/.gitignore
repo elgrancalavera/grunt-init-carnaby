@@ -1,5 +1,9 @@
-local.json
-node_modules/
+node_modules
+npm-debug.log
+tmp
 .DS_Store
+.carnaby
 bower_components
-.carnaby/tmp
+.sass-cache
+targets
+.preflight
