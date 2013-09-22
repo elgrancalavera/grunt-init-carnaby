@@ -1,11 +1,12 @@
+/*global module:false*/
 /*
  * {%= name %}
  * {%= repository %}
  * Copyright (c) {%= grunt.template.today('yyyy') %} {%= author_name %}
  * {%= author_url %}
  */
-/*global module:false*/
 'use strict';
+
 var path = require('path');
 var LIVERELOAD_PORT = 35729;
 var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
@@ -15,39 +16,17 @@ var mountFolder = function (connect, dir) {
 
 module.exports = function(grunt) {
   grunt.initConfig({
-
-    //--------------------------------------------------------------------------
-    //
-    // Carnaby
-    //
-    //--------------------------------------------------------------------------
-
     carnaby: {
       appDir: 'app',
       bowerDir: grunt.file.readJSON('.bowerrc').directory,
-      targetDir: '.'
+      targetDir: '.',
+      vendorDir: 'vendor'
     },
-
-    //--------------------------------------------------------------------------
-    //
-    // Grunt
-    //
-    //--------------------------------------------------------------------------
-
     connect: {
       options: {
         port: 9000,
         // change this to '0.0.0.0' to access the server from outside
         hostname: 'localhost'
-      },
-      dist: {
-        options: {
-          middleware: function (connect) {
-            return [
-              mountFolder(connect, 'dist')
-            ];
-          }
-        }
       },
       livereload: {
         options: {
@@ -73,25 +52,28 @@ module.exports = function(grunt) {
           livereload: LIVERELOAD_PORT
         },
         files: [
-          '<%= carnaby.appDir %>/**/*.html'
+          '<%= carnaby.appDir %>/**/*.html',
+          '.carnaby/tmp/*/scripts/templates.js'
         ]
-      },
-      dev: {
-        files: '<%= jshint.dev %>',
-        tasks: ['jshint:dev']
       },
       updateConfig: {
         files: '.carnaby/project.json',
         tasks: ['carnaby:update-config']
-      }
+      },
+      project: {
+        files: '<%= jshint.project %>',
+        tasks: ['jshint:project']
+      },
     },
     jshint: {
       options: {
         jshintrc: '.jshintrc',
       },
-      dev: [
+      project: [
         'Gruntfile.js',
-        '<%= carnaby.appDir %>/scripts/**/*.js'
+        '<%= carnaby.appDir %>/core/common/scripts/**/*.js',
+        'tasks/**/*.js',
+        '!**/templates/**/*',
       ]
     }
   });
@@ -104,7 +86,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('carnaby:start', [
     'carnaby:update-client:all',
-    'jshint:dev',
+    'jshint',
     'connect:livereload',
     'watch'
   ]);

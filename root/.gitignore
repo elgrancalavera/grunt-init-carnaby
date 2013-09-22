@@ -1,9 +1,7 @@
 node_modules
-npm-debug.log
-tmp
 .DS_Store
-.carnaby
+tmp
+.tmp
 bower_components
 .sass-cache
-targets
 .preflight
