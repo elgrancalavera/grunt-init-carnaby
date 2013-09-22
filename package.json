@@ -1,7 +1,7 @@
 {
   "name": "grunt-init-carnaby",
   "description": "The Carnaby workflow scaffolding template.",
-  "version": "0.1.0 ",
+  "version": "0.1.0",
   "homepage": "https://github.com/elgrancalavera/grunt-init-carnaby",
   "author": {
     "name": "M&C Saatchi",
@@ -41,7 +41,8 @@
     "grunt-extend": "~0.4.1",
     "matchdep": "~0.1.2",
     "grunt-contrib-compass": "~0.5.0",
-    "grunt-contrib-requirejs": "~0.4.1"
+    "grunt-contrib-requirejs": "~0.4.1",
+    "grunt-carnaby": "~0.1.0"
   },
   "keywords": [
     "grunt-init"
