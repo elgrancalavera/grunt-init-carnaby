@@ -9,7 +9,7 @@
 
 var path = require('path');
 var LIVERELOAD_PORT = 35729;
-var lrSnippet = require('connect-livereload')({port: LIVERELOAD_PORT});
+var lrSnippet = require('connect-livereload')({ port: LIVERELOAD_PORT });
 var mountFolder = function (connect, dir) {
   return connect.static(path.resolve(dir));
 };
@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     carnaby: {
       appDir: 'app',
       bowerDir: grunt.file.readJSON('.bowerrc').directory,
-      targetDir: '.',
+      targetDir: 'targets',
       vendorDir: 'vendor'
     },
     connect: {
@@ -34,8 +34,8 @@ module.exports = function(grunt) {
             return [
               lrSnippet,
               mountFolder(connect, '.carnaby/tmp'),
-              mountFolder(connect, grunt.config('carnaby.vendorDir')),
-              mountFolder(connect, path.join(grunt.config('carnaby.appDir') , 'core')),
+              mountFolder(connect, '.carnaby/common-symlinks'),
+              mountFolder(connect, '.carnaby/vendor-symlinks'),
               mountFolder(connect, grunt.config('carnaby.appDir'))
             ];
           }
