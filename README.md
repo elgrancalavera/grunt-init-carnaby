@@ -1,27 +1,8 @@
-# grunt-init-carnaby [![Build Status](https://secure.travis-ci.org/elgrancalavera/grunt-init-carnaby.png?branch=master)](http://travis-ci.org/elgrancalavera/grunt-init-carnaby)
+# grunt-init-carnaby
 
-The Carnaby workflow scaffolding template.
+![grunt-carnaby](https://raw.github.com/elgrancalavera/grunt-carnaby/master/img/carnaby.png)
 
-## Getting Started
-Install the module with: `npm install grunt-init-carnaby`
+> This project is like, seriously alpha.
 
-```javascript
-var carnaby = require('grunt-init-carnaby');
-carnaby.awesome(); // "awesome"
-```
+There's no docuemntation yet, and the API will continue changing aggressively. Feel free to look around, but don't expect things to work all the time.
 
-## Documentation
-_(Coming soon)_
-
-## Examples
-_(Coming soon)_
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
-## Release History
-_(Nothing yet)_
-
-## License
-Copyright (c) 2013 M&C Saatchi
-Licensed under the MIT license.
