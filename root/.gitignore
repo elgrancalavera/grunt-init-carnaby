@@ -1,7 +1,8 @@
-node_modules
 .DS_Store
-tmp
+.preflight
+.sass-cache
 .tmp
 bower_components
-.sass-cache
-.preflight
+local.json
+node_modules
+tmp
