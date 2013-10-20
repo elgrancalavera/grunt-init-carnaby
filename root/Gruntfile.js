@@ -20,7 +20,12 @@ module.exports = function(grunt) {
       appDir: 'app',
       bowerDir: grunt.file.readJSON('.bowerrc').directory,
       targetDir: 'targets',
-      vendorDir: 'vendor'
+      vendorDir: 'vendor',
+      tmpDir: '.tmp',
+      symlinks: {
+        common: '.symlinks/common',
+        vendor: '.symlinks/vendor',
+      },
     },
     connect: {
       options: {
@@ -33,10 +38,10 @@ module.exports = function(grunt) {
           middleware: function (connect) {
             return [
               lrSnippet,
-              mountFolder(connect, '.carnaby/tmp'),
-              mountFolder(connect, '.carnaby/common-symlinks'),
-              mountFolder(connect, '.carnaby/vendor-symlinks'),
-              mountFolder(connect, grunt.config('carnaby.appDir'))
+              mountFolder(connect, grunt.config('carnaby.symlinks.common')),
+              mountFolder(connect, grunt.config('carnaby.symlinks.vendor')),
+              mountFolder(connect, grunt.config('carnaby.tmpDir')),
+              mountFolder(connect, grunt.config('carnaby.appDir')),
             ];
           }
         }
@@ -53,7 +58,7 @@ module.exports = function(grunt) {
         },
         files: [
           '<%= carnaby.appDir %>/**/*.html',
-          '.carnaby/tmp/*/scripts/templates.js'
+          '<%= carnaby.tmpDir %>/*/scripts/templates.js'
         ]
       },
       updateConfig: {
@@ -61,7 +66,10 @@ module.exports = function(grunt) {
         tasks: ['carnaby:update-config']
       },
       project: {
-        files: '<%= jshint.project %>',
+        files: [
+          '<%= jshint.project.src %>',
+          '!**/templates/**/*.js',
+        ],
         tasks: ['jshint:project']
       },
     },
@@ -69,28 +77,29 @@ module.exports = function(grunt) {
       options: {
         jshintrc: '.jshintrc',
       },
-      project: [
-        'Gruntfile.js',
-        '<%= carnaby.appDir %>/core/common/scripts/**/*.js',
-        'tasks/**/*.js',
-        '!**/templates/**/*',
-      ]
+      project: {
+        options: {
+          ignores: [
+            '**/templates/**/*.js'
+          ]
+        },
+        src: [
+          'Gruntfile.js',
+          '<%= carnaby.appDir %>/**/scripts/**/*.js',
+          'tasks/**/*.js'
+        ]
+      },
     }
   });
 
-  // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  // manually load grunt-carnaby (by now)
-  grunt.loadNpmTasks('grunt-carnaby');
+  grunt.registerTask('default', ['jshint']);
 
-  grunt.registerTask('carnaby:start', [
+  grunt.registerTask('start', [
     'carnaby:update-client:all',
     'jshint',
     'connect:livereload',
     'watch'
   ]);
-
-  grunt.registerTask('default', ['carnaby:build:all']);
-
 };

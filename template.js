@@ -23,6 +23,7 @@ exports.warnOn = '*';
 exports.template = function (grunt, init, done) {
   // The package.json file for this grunt project
   var pkg = grunt.file.readJSON(path.join(__dirname, 'package.json'));
+  var devDependencies = grunt.file.readJSON(path.join(__dirname, 'dev-dependencies.json'));
 
   // generate dependencies
   var ignoredDeps = [
@@ -34,26 +35,24 @@ exports.template = function (grunt, init, done) {
   });
 
   init.process({type: 'carnaby'}, [
+
     init.prompt('name'),
     init.prompt('title'),
-    init.prompt('description', 'A Carnaby project.'),
+    init.prompt('description'),
     init.prompt('version'),
     init.prompt('repository'),
     init.prompt('homepage'),
     init.prompt('bugs'),
     init.prompt('licenses'),
-    init.prompt('grunt_version'),
     init.prompt('node_version', grunt.package.engines.node)
 
   ], function(err, props) {
 
-    props.author_name = pkg.name;
+    props.author_name = pkg.author.name;
     props.author_url = pkg.author.url;
     props.author_email = pkg.author.email;
     props.main = 'Gruntfile.js';
-    props.npm_test = 'grunt test';
-
-    props.devDependencies = pkg.devDependencies;
+    props.devDependencies = devDependencies;
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);

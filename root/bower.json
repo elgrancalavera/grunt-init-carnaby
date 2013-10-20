@@ -1,20 +1,18 @@
 {
-    "name": "{%= name %}",
-    "version": "{%= version %}",
-    "main": "Gruntfile.js",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "devDependencies": {
-        "html5-boilerplate": "~4.2.0",
-        "requirejs": "~2.1.8",
-        "marionette": "~1.1.0",
-        "handlebars": "~1.0.0",
-        "jquery": "~2.0.3",
-        "modernizr": "~2.6.2"
-    }
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "html5-boilerplate": "~4.2.0",
+    "requirejs": "~2.1.8",
+    "marionette": "~1.1.0",
+    "handlebars": "~1.0.0",
+    "jquery": "~2.0.3",
+    "modernizr": "~2.6.2"
+  }
 }

@@ -8,6 +8,8 @@
       [
         "node_modules",
         ".preflight",
+        ".sass-cache",
+        ".symlinks",
         "tmp",
         ".tmp"
       ]
